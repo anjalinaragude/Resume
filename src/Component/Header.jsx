@@ -18,6 +18,8 @@ const Header = () => {
    <Link to='/education'> <li className="my-2 text-black fs-4 list-group-item">Education</li></Link>
    <Link to='/skill'>  <li className="my-2 text-black fs-4 list-group-item">Skills</li></Link>
    <Link to='/interest'>   <li className="my-2 text-black fs-4 list-group-item">Interests</li></Link>
+   <Link to='/popup'>   <li className="my-2 text-black fs-4 list-group-item">Popup</li></Link>
+   
    </ul>
     </div>
    

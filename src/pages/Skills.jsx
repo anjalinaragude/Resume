@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { FaHtml5, FaJava } from 'react-icons/fa6';
+import {
+  FaHtml5,
+  FaJava,
+  FaEdit
+} from 'react-icons/fa6';
 import { IoLogoCss3, IoLogoJavascript } from 'react-icons/io';
 import { GrReactjs } from 'react-icons/gr';
-import { MdModeEdit } from "react-icons/md";
+import { MdModeEdit } from 'react-icons/md';
+
 const Skills = () => {
   const [inputValue, setInputValue] = useState('');
   const [showIcon, setShowIcon] = useState([]);
@@ -18,7 +23,7 @@ const Skills = () => {
     // Check if the icon is not already in the uniqueIcons set
     if (!uniqueIcons.has(inputValue)) {
       setUniqueIcons((prevSet) => new Set([...prevSet, inputValue]));
-      setShowIcon((prevIcons) => [...prevIcons, ...newIcons]);
+      setShowIcon((prevIcons) => [...prevIcons, { icon: newIcons[0], value: inputValue }]);
     }
   };
 
@@ -39,6 +44,13 @@ const Skills = () => {
     }
   };
 
+  const handleEditClick = (index) => {
+    const iconToEdit = showIcon[index];
+    setInputValue(iconToEdit.value);
+    setShowIcon((prevIcons) => prevIcons.filter((_, i) => i !== index));
+    setUniqueIcons((prevSet) => new Set([...prevSet].filter((item) => item !== iconToEdit.value)));
+  };
+
   return (
     <div>
       <h1>Skills</h1>
@@ -52,16 +64,15 @@ const Skills = () => {
       <button onClick={handleAddButtonClick}>Add</button>
 
       {showIcon.length > 0 && (
-        <div className='d-flex justify-content-center m-5 align-items-center' >
+        <div className="d-flex justify-content-center m-5 align-items-center">
           {showIcon.map((item, index) => (
-            <div key={index} className='m-5'>
-                
-                {item}<MdModeEdit/> 
+            <div key={index} className="m-5">
+              {item.icon}
+              <MdModeEdit onClick={() => handleEditClick(index)} style={{ cursor: 'pointer' }} />
             </div>
           ))}
         </div>
       )}
-      {/* Add more components or content as needed */}
     </div>
   );
 };

@@ -9,6 +9,7 @@ import Interest from './pages/Interest';
 import Header from './Component/Header';
 import SkillTracker from './Component/DisplayPage';
 import DisplayPage from './Component/DisplayPage';
+import Popup from './Component/Popup';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
       <Route path='/education' element={<Education/>}></Route>
       <Route path='/skill' element={<Skills/>}></Route>
       <Route path='/interest' element={<Interest/>}></Route>
+      <Route path='/popup' element={<Popup/>}></Route>
+      
       
       
       
@@ -31,6 +34,7 @@ function App() {
      
       <Header/>
       {/* <DisplayPage/> */}
+      {/* <Popup/> */}
 
       </BrowserRouter>
       
